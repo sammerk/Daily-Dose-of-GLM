@@ -1,0 +1,13 @@
+---
+title: "Helloooo 👋🏼"
+---
+
+Hier findet ihr bunt zusammmenkopierte Materialien von mir mit denen wir die zwei Sitzungen "Daily Dose of GLM" in der vorlesungsfreien Zeit des Winters 25/26 gestalten.
+
+
+:::{.callout-caution collapse=false appearance='default'}
+## Obacht:
+* Dies Materialien sind natürlich kein vollständiges Lehrbuch sondern nur eine kleine Sammlung von Beispielen für uns. Als Lehrbuch kann ich Paul Roback & Julie Legler's [»Beyond Multiple Linear Regression« ](https://bookdown.org/roback/bookdown-BeyondMLR/) empfehlen [-@roback2021].
+* Gefundene Fehler oder Typos gerne kurz an mich schicken.
+:::
+

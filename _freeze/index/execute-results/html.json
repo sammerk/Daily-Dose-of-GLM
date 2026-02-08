@@ -1,0 +1,15 @@
+{
+  "hash": "b2746eba49f3b76a82ba619393d692ad",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Helloooo 👋🏼\"\n---\n\nHier findet ihr bunt zusammmenkopierte Materialien von mir mit denen wir die zwei Sitzungen \"Daily DOse of GLM\" in der vorlesungsfreien Zeit des Winters 25/26 gestalten.\n\n\n:::{.callout-caution collapse=false appearance='default' icon=false}\n## Obacht\n* Dies Materialien sind natürlich kein vollständiges Lehrbuch sondern nur ien kleine Sammlung von Beispielen für uns. Als Lehrbuch kann ich Paul Roback & Julie Legler's \"Beyond Multiple Linear Regression\" empfehlen [-@roback2021].\n:::\n\n\n\n\n::: {.cell}\n\n:::\n",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
