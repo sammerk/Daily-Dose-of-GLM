@@ -9,7 +9,12 @@ webr:
   packages:
     - dplyr
     - haven
-#    - ggplot2
+    - equatiomatic
+    - ggplot2
+    - ggdist
+    - dplyr
+    - sjPlot
+    - performance
 toc: true    
 lang: de
 ---
