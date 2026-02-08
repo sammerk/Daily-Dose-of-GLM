@@ -612,8 +612,24 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImxhYmVsIjoiaW1wb3J0IGNyaW1lIGRhdGEi
 
 </div>
 <script type="webr-7-contents">
-eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibW9kZWwzYSA8LSBnbG0oXG4gIG52IH4gRW5yb2xsbWVudCxcbiAgZGF0YSA9IGRhdGFfY3JpbWUsXG4gIGZhbWlseSA9IHBvaXNzb24obGluayA9IFwibG9nXCIpXG4pXG5cbm1vZGVsM2IgPC0gZ2xtKFxuICBudiB+IHR5cGUsXG4gIGRhdGEgPSBkYXRhX2NyaW1lLFxuICBmYW1pbHkgPSBwb2lzc29uKGxpbmsgPSBcImxvZ1wiKVxuKVxuXG5tb2RlbDNjIDwtIGdsbShcbiAgbnYgfiBFbnJvbGxtZW50ICsgdHlwZSxcbiAgZGF0YSA9IGRhdGFfY3JpbWUsXG4gIGZhbWlseSA9IHBvaXNzb24obGluayA9IFwibG9nXCIpXG4pXG5cbm1vZGVsM2QgPC0gZ2xtKFxuICBudiB+IEVucm9sbG1lbnQgKyB0eXBlICsgcmVnaW9uLFxuICBkYXRhID0gZGF0YV9jcmltZSxcbiAgZmFtaWx5ID0gcG9pc3NvbihsaW5rID0gXCJsb2dcIilcbilcblxudGFiX21vZGVsKFxuICBtb2RlbDNhLFxuICBtb2RlbDNiLFxuICBtb2RlbDNjLFxuICBtb2RlbDNkLFxuICBzaG93LmNpID0gRixcbiAgdHJhbnNmb3JtID0gTlVMTCxcbiAgcC5zdHlsZSA9IFwic3RhcnNcIlxuKVxuXG5jaGVja19wcmVkaWN0aW9ucyhtb2RlbDNkLCB0eXBlID0gXCJkaXNjcmV0ZV9ib3RoXCIpIn0=
+eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWV9LCJjb2RlIjoibW9kZWwzYSA8LSBnbG0oXG4gIG52IH4gRW5yb2xsbWVudCxcbiAgZGF0YSA9IGRhdGFfY3JpbWUsXG4gIGZhbWlseSA9IHBvaXNzb24obGluayA9IFwibG9nXCIpXG4pXG5cbm1vZGVsM2IgPC0gZ2xtKFxuICBudiB+IHR5cGUsXG4gIGRhdGEgPSBkYXRhX2NyaW1lLFxuICBmYW1pbHkgPSBwb2lzc29uKGxpbmsgPSBcImxvZ1wiKVxuKVxuXG5tb2RlbDNjIDwtIGdsbShcbiAgbnYgfiBFbnJvbGxtZW50ICsgdHlwZSxcbiAgZGF0YSA9IGRhdGFfY3JpbWUsXG4gIGZhbWlseSA9IHBvaXNzb24obGluayA9IFwibG9nXCIpXG4pXG5cbm1vZGVsM2QgPC0gZ2xtKFxuICBudiB+IEVucm9sbG1lbnQgKyB0eXBlICsgcmVnaW9uLFxuICBkYXRhID0gZGF0YV9jcmltZSxcbiAgZmFtaWx5ID0gcG9pc3NvbihsaW5rID0gXCJsb2dcIilcbilcblxudGFiX21vZGVsKFxuICBtb2RlbDNhLFxuICBtb2RlbDNiLFxuICBtb2RlbDNjLFxuICBtb2RlbDNkLFxuICBzaG93LmNpID0gRixcbiAgdHJhbnNmb3JtID0gTlVMTCxcbiAgcC5zdHlsZSA9IFwic3RhcnNcIlxuKSJ9
 </script>
+</div>
+</div>
+<p>Die Modellgüte lässt sich mit verschiedenen Methoden überprüfen, z.B. durch die Überprüfung der Vorhersagen des Modells. Hier verwenden wir die Funktion <code>check_predictions()</code> aus dem <code>performance</code>-Paket, um den Vorhersagen des Modells die empirische Häufigkeitsverteilung gegenüberzustellen.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">check_predictions</span>(model3d, <span class="at">type =</span> <span class="st">"discrete_both"</span>)</span></code></pre></div><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Ignoring unknown labels:
+• size : ""
+• alpha : ""</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Poisson-Regression_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="2100"></p>
+</figure>
+</div>
 </div>
 </div>
 

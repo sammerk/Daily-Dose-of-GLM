@@ -424,7 +424,7 @@ Erklärung der einzelnen Teile des Codes:
 
 Der Output entspricht folgender Regressionsgleichung:
 ```{r}
-#| label: model1 model
+#| label: hidden modeling chunk
 #| echo: false
 #| results: hide
 
@@ -447,6 +447,41 @@ model1 <- glm( # <1>
 model2 <- glm(
   gestures ~ context + dur,
   data = data_winter,
+  family = poisson(link = "log")
+)
+
+data_crime <- read.csv(
+  paste0(
+    c(
+      "https://raw.githubusercontent.com/",
+      "proback/BeyondMLR/refs/heads/",
+      "/master/data/c_data.csv"
+    ),
+    collapse = ""
+  )
+)
+
+model3a <- glm(
+  nv ~ Enrollment,
+  data = data_crime,
+  family = poisson(link = "log")
+)
+
+model3b <- glm(
+  nv ~ type,
+  data = data_crime,
+  family = poisson(link = "log")
+)
+
+model3c <- glm(
+  nv ~ Enrollment + type,
+  data = data_crime,
+  family = poisson(link = "log")
+)
+
+model3d <- glm(
+  nv ~ Enrollment + type + region,
+  data = data_crime,
   family = poisson(link = "log")
 )
 ```
@@ -561,6 +596,11 @@ tab_model(
   transform = NULL,
   p.style = "stars"
 )
+```
 
+Die Modellgüte lässt sich mit verschiedenen Methoden überprüfen, z.B. durch die Überprüfung der Vorhersagen des Modells. Hier verwenden wir die Funktion `check_predictions()` aus dem `performance`-Paket, um den Vorhersagen des Modells  die empirische Häufigkeitsverteilung gegenüberzustellen.
+
+
+```{r}
 check_predictions(model3d, type = "discrete_both")
 ```
