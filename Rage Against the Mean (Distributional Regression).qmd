@@ -1,0 +1,26 @@
+---
+title: "Rage Against the Mean (Distributional Regression)"
+format:
+  live-html:
+    css: 
+      - exams/webex.css
+    include-after-body: exams/webex.js
+webr:
+  packages:
+    - dplyr
+    - haven
+    - equatiomatic
+    - ggplot2
+    - ggdist
+    - dplyr
+    - sjPlot
+    - performance
+toc: true    
+lang: de
+---
+
+{{< include _extensions/r-wasm/live/_knitr.qmd >}}
+
+::: {.callout-tip}
+Wird noch bis zum 24.2. ergänzt.
+:::

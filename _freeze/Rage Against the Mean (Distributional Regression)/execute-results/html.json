@@ -1,0 +1,15 @@
+{
+  "hash": "172e772be55bd9afcc06ca0b2af6a60e",
+  "result": {
+    "engine": "knitr",
+    "markdown": "---\ntitle: \"Rage Against the Mean (Distributional Regression)\"\nformat:\n  live-html:\n    css: \n      - exams/webex.css\n    include-after-body: exams/webex.js\nwebr:\n  packages:\n    - dplyr\n    - haven\n    - equatiomatic\n    - ggplot2\n    - ggdist\n    - dplyr\n    - sjPlot\n    - performance\ntoc: true    \nlang: de\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.callout-tip}\nWird noch bis zum 24.2. ergänzt.\n:::",
+    "supporting": [],
+    "filters": [
+      "rmarkdown/pagebreak.lua"
+    ],
+    "includes": {},
+    "engineDependencies": {},
+    "preserve": {},
+    "postProcess": true
+  }
+}
