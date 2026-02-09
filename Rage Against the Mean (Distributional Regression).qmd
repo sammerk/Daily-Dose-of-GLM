@@ -24,3 +24,14 @@ lang: de
 ::: {.callout}
 Wird noch bis zum 24.2. ergänzt.
 :::
+
+
+```{r}
+library(readr)
+library(ggplot2)
+data_distributional <- read_csv("data_distributional.csv")
+
+ggplot(data_distributional, aes(x = time_years, y = value_euros)) +
+  geom_point() +
+  theme_minimal()
+```
