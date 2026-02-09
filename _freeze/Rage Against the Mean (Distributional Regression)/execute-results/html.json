@@ -1,9 +1,11 @@
 {
-  "hash": "cd3f498686874eb5ad77040192dc1430",
+  "hash": "5cdecd9d8d2f33832d9965d281d39d4b",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Rage Against the Mean (Distributional Regression)\"\nformat:\n  live-html:\n    css: \n      - exams/webex.css\n    include-after-body: exams/webex.js\nwebr:\n  packages:\n    - dplyr\n    - haven\n    - equatiomatic\n    - ggplot2\n    - ggdist\n    - dplyr\n    - sjPlot\n    - performance\ntoc: true    \nlang: de\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.callout}\nWird noch bis zum 24.2. ergänzt.\n:::",
-    "supporting": [],
+    "markdown": "---\ntitle: \"Rage Against the Mean (Distributional Regression)\"\nformat:\n  live-html:\n    css: \n      - exams/webex.css\n    include-after-body: exams/webex.js\nwebr:\n  packages:\n    - dplyr\n    - haven\n    - equatiomatic\n    - ggplot2\n    - ggdist\n    - dplyr\n    - sjPlot\n    - performance\ntoc: true    \nlang: de\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.callout}\nWird noch bis zum 24.2. ergänzt.\n:::\n\n\n\n::: {.cell}\n\n```{.r .cell-code}\nlibrary(readr)\nlibrary(ggplot2)\ndata_distributional <- read_csv(\"data_distributional.csv\")\n```\n\n::: {.cell-output .cell-output-stderr}\n\n```\nRows: 938 Columns: 3\n── Column specification ────────────────────────────────────────────────────────\nDelimiter: \",\"\nchr (1): data_type\ndbl (2): time_years, value_euros\n\nℹ Use `spec()` to retrieve the full column specification for this data.\nℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.\n```\n\n\n:::\n\n```{.r .cell-code}\nggplot(data_distributional, aes(x = time_years, y = value_euros)) +\n  geom_point() +\n  theme_minimal()\n```\n\n::: {.cell-output-display}\n![](Rage-Against-the-Mean--Distributional-Regression-_files/figure-html/unnamed-chunk-2-1.png){width=2100}\n:::\n:::\n",
+    "supporting": [
+      "Rage-Against-the-Mean--Distributional-Regression-_files"
+    ],
     "filters": [
       "rmarkdown/pagebreak.lua"
     ],
