@@ -1,8 +1,8 @@
 {
-  "hash": "172e772be55bd9afcc06ca0b2af6a60e",
+  "hash": "cd3f498686874eb5ad77040192dc1430",
   "result": {
     "engine": "knitr",
-    "markdown": "---\ntitle: \"Rage Against the Mean (Distributional Regression)\"\nformat:\n  live-html:\n    css: \n      - exams/webex.css\n    include-after-body: exams/webex.js\nwebr:\n  packages:\n    - dplyr\n    - haven\n    - equatiomatic\n    - ggplot2\n    - ggdist\n    - dplyr\n    - sjPlot\n    - performance\ntoc: true    \nlang: de\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.callout-tip}\nWird noch bis zum 24.2. ergänzt.\n:::",
+    "markdown": "---\ntitle: \"Rage Against the Mean (Distributional Regression)\"\nformat:\n  live-html:\n    css: \n      - exams/webex.css\n    include-after-body: exams/webex.js\nwebr:\n  packages:\n    - dplyr\n    - haven\n    - equatiomatic\n    - ggplot2\n    - ggdist\n    - dplyr\n    - sjPlot\n    - performance\ntoc: true    \nlang: de\n---\n\n\n::: {.cell}\n\n:::\n\n\n\n::: {.callout}\nWird noch bis zum 24.2. ergänzt.\n:::",
     "supporting": [],
     "filters": [
       "rmarkdown/pagebreak.lua"

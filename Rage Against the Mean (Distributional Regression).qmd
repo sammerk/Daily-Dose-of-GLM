@@ -21,6 +21,6 @@ lang: de
 
 {{< include _extensions/r-wasm/live/_knitr.qmd >}}
 
-::: {.callout-tip}
+::: {.callout}
 Wird noch bis zum 24.2. ergänzt.
 :::
