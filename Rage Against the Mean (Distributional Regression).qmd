@@ -5,33 +5,156 @@ format:
     css: 
       - exams/webex.css
     include-after-body: exams/webex.js
-webr:
-  packages:
-    - dplyr
-    - haven
-    - equatiomatic
-    - ggplot2
-    - ggdist
-    - dplyr
-    - sjPlot
-    - performance
+# webr:
+#   packages:
+#     - dplyr
+#     - haven
+#     - equatiomatic
+#     - ggplot2
+#     - tidyr
+#     - ggdist
+#     - dplyr
+#     - sjPlot
+#     - performance
 toc: true    
 lang: de
 ---
 
 {{< include _extensions/r-wasm/live/_knitr.qmd >}}
 
+## Motivation
+Bisher haben wir uns mit der Modellierung von Mittelwerten (in abhängigen Variablen) bedingt auf unabhängige Variablen beschäftigt. Die Residualvarianz haben wir dabei tendenziell als unerwünschte »Nicht-Passung« der Modelle betrachtet. In einigen Situationen könnte es jedoch interessant sein, die (Residual-)Varianz der abhängigen Variablen zu modellieren. 
+
 ::: {.callout}
-Wird noch bis zum 24.2. ergänzt.
+## Pot. Fragestellungen bzgl. der Varianz
+- Kann mit einer Schulung zur Diagnostischen Kompetenz die Noise der Urteile reduziert werden?
+- Steigt mit einer Leseflüssigkeitsintervention nur die Leseflüssigkeit oder auch deren Varianz?
+- Sinkt durch eine individualisierte Motivationsintervention die Heterogenität der Lernleistungen?
 :::
 
+## Ein erstes Beispiel: Diagnostische Kompetenz
+Ein gängiges Maß zur Opertionalisierung der Urteilsakkuratheit ist die sogenannte Niveauakkuratheit. Sie ist als die Differenz des Urteils und der »Ground Truth« definiert. Je kleiner der Betrag der Niveauakkuratheit, desto genauer ist das Urteil. Stellen wir uns vor, 563 Sportlehrkräfte sollen von jeweils einer zufällig ausgewählten Schülerin einschätzen, wie weit diese aus den Stand springen kann. Anschließend werden die tatsächlichen Weiten der Sprünge gemessen (»Ground Truth«). Nun könnte es interessant sein, zu untersuchen, ob eine Schulung zur Diagnostischen Kompetenz nicht nur die Niveauakkuratheit (also den Mittelwert der Differenz Urteil/Ground Truth) verbessert, sondern auch die Varianz der Niveauakkuratheit (Noise) reduziert.
+
+### Simulierte Daten
+```{r}
+library(tibble)
+library(dplyr)
+library(tidyr)
+library(ggplot2)
+library(ggdist)
+
+set.seed(1895)
+n <- 231
+data <- tibble(
+  id = 1:n,
+  Niveauakk_Control = rnorm(n, mean = 15, sd = 40),
+  Niveauakk_Intervention = rnorm(n, mean = 5, sd = 30)
+) %>%
+  pivot_longer(
+    cols = c(Niveauakk_Control, Niveauakk_Intervention),
+    names_to = "Group",
+    values_to = "Niveauakk"
+  )
+```
+
+### Plot der Daten
+Mit ggdist können wir hübsch die Gruppe auf die x-Achse legen und die Niveauakkuratheit auf der y-Achse. Zusätzlich können wir die Verteilung der Niveauakkuratheit mit einen dot_plot und errorbar für mean und sd visualisieren.
+```{r}
+
+ggplot(data, aes(x = Group, y = Niveauakk, color = Group, fill = Group)) +
+  stat_dots(
+    side = "left",
+    scale = 0.5,
+    dotsize = 1.2
+  ) +
+  stat_summary(
+    fun.data = mean_sdl,
+    fun.args = list(mult = 1),
+    geom = "pointrange",
+    position = position_nudge(x = 0.05),
+    size = 0.8
+  ) +
+  scale_color_manual(values = c("#E69F00", "#267326")) +
+  scale_fill_manual(values = c("#E69F00", "#267326")) +
+  labs(
+    x = "Gruppe",
+    y = "Niveauakkuratheit"
+  ) +
+  theme(
+    legend.position = "none",
+    panel.background = element_rect(fill = "#f2f2f2"),
+    plot.background = element_rect(fill = "#f2f2f2")
+  )
+ 
+```
+
+### Distributional (Gaussian) Regression
+Die Idee der Distributional Regression ist es, nicht nur den Mittelwert der abhängigen Variablen zu modellieren, sondern auch die Varianz. In unserem Beispiel könnte das Modell wie folgt aussehen:
+```{r}
+library(glmmTMB)
+
+model <- glmmTMB(
+  Niveauakk ~ Group, # <1>
+  dispformula = ~ Group, # <2>
+  data = data, # <3>
+  family = gaussian() # <4>
+)
+summary(model)
+```
+1. Formel für den Mittelwert: Die Niveauakkuratheit wird durch die Gruppenzugehörigkeit vorhergesagt.
+2. Formel für die Dispersion (Varianz): Auch die Varianz der Niveauakkuratheit kann sich zwischen den Gruppen unterscheiden.
+3. Der Datensatz mit den simulierten Daten.
+4. Die Normalverteilung als Verteilungsannahme für die abhängige Variable.
+
+### Interpretation des Outputs
+Der Output zeigt zwei Teile: Das **Conditional Model** (Mittelwertmodell) und das **Dispersion Model** (Varianzmodell).
+
+**Conditional Model (Mittelwert):**
+
+- `(Intercept)`: Der geschätzte Mittelwert der Niveauakkuratheit in der Kontrollgruppe.
+- `GroupNiveauakk_Intervention`: Die Differenz des Mittelwerts zwischen Interventions- und Kontrollgruppe. Ein negativer Wert bedeutet, dass die Interventionsgruppe im Mittel eine niedrigere (= bessere) Niveauakkuratheit aufweist.
+
+**Dispersion Model (Varianz):**
+
+- `(Intercept)`: Der logarithmierte Varianzparameter der Kontrollgruppe.
+- `GroupNiveauakk_Intervention`: Die Änderung des logarithmierten Varianzparameters in der Interventionsgruppe. Ein negativer Wert bedeutet, dass die Varianz (Noise) in der Interventionsgruppe geringer ist als in der Kontrollgruppe.
+
+Um die tatsächlichen Standardabweichungen zu erhalten, müssen die Dispersionsparameter exponenziert und die Wurzel gezogen werden: $\sigma = e^{\text{Dispersion}}$.
+
+### Vergleich: Modellschätzungen vs. empirische Daten
+Um die Modellschätzungen zu validieren, vergleichen wir sie mit den empirischen Mittelwerten und Standardabweichungen:
 
 ```{r}
-library(readr)
-library(ggplot2)
-data_distributional <- read_csv("data_distributional.csv")
+# Empirische Statistiken
+empirisch <- data |>
+  group_by(Group) |>
+  summarise(
+    Mean = mean(Niveauakk),
+    SD = sd(Niveauakk),
+    .groups = "drop"
+  )
 
-ggplot(data_distributional, aes(x = time_years, y = value_euros)) +
-  geom_point() +
-  theme_minimal()
+# Modellbasierte Schätzungen
+# Mittelwerte aus dem Conditional Model
+coef_mean <- fixef(model)$cond
+mean_control <- coef_mean["(Intercept)"]
+mean_intervention <- coef_mean["(Intercept)"] + coef_mean["GroupNiveauakk_Intervention"]
+
+# Standardabweichungen aus dem Dispersion Model
+coef_disp <- fixef(model)$disp
+sd_control <- exp(coef_disp["(Intercept)"])
+sd_intervention <- exp(coef_disp["(Intercept)"] + coef_disp["GroupNiveauakk_Intervention"])
+
+# Vergleichstabelle erstellen
+modellbasiert <- tibble(
+  Group = c("Niveauakk_Control", "Niveauakk_Intervention"),
+  Mean_Modell = c(mean_control, mean_intervention),
+  SD_Modell = c(sd_control, sd_intervention)
+)
+
+# Zusammenführen und anzeigen
+vergleich <- left_join(empirisch, modellbasiert, by = "Group")
+vergleich
 ```
+
+Die Tabelle zeigt, dass die Modellschätzungen sehr gut mit den empirischen Werten übereinstimmen. Dies ist zu erwarten, da das Modell bei kategorialen Prädiktoren ohne weitere Kovariaten die gruppenspezifischen Mittelwerte und Varianzen direkt schätzt.

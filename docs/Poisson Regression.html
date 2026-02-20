@@ -248,7 +248,7 @@ window.Quarto = {
   <li><a href="#poisson-prozesse" id="toc-poisson-prozesse" class="nav-link active" data-scroll-target="#poisson-prozesse"><span class="header-section-number">1</span> Poisson Prozesse</a></li>
   <li><a href="#poissonverteilung" id="toc-poissonverteilung" class="nav-link" data-scroll-target="#poissonverteilung"><span class="header-section-number">2</span> Poissonverteilung</a></li>
   <li><a href="#poisson-regression" id="toc-poisson-regression" class="nav-link" data-scroll-target="#poisson-regression"><span class="header-section-number">3</span> Poisson Regression</a></li>
-  <li><a href="#beispiel-1-anzahl-von-gesten-bei-sprechen" id="toc-beispiel-1-anzahl-von-gesten-bei-sprechen" class="nav-link" data-scroll-target="#beispiel-1-anzahl-von-gesten-bei-sprechen"><span class="header-section-number">4</span> Beispiel 1: Anzahl von Gesten bei Sprechen</a>
+  <li><a href="#beispiel-1-anzahl-von-gesten-beim-sprechen" id="toc-beispiel-1-anzahl-von-gesten-beim-sprechen" class="nav-link" data-scroll-target="#beispiel-1-anzahl-von-gesten-beim-sprechen"><span class="header-section-number">4</span> Beispiel 1: Anzahl von Gesten beim Sprechen</a>
   <ul class="collapse">
   <li><a href="#modell-1-anzahl-der-gesten-als-funktion-der-sprache" id="toc-modell-1-anzahl-der-gesten-als-funktion-der-sprache" class="nav-link" data-scroll-target="#modell-1-anzahl-der-gesten-als-funktion-der-sprache"><span class="header-section-number">4.1</span> Modell 1: Anzahl der Gesten als Funktion der Sprache</a></li>
   <li><a href="#modell-2-anzahl-der-gesten-als-funktion-des-kontextes-und-gesprächsdauer" id="toc-modell-2-anzahl-der-gesten-als-funktion-des-kontextes-und-gesprächsdauer" class="nav-link" data-scroll-target="#modell-2-anzahl-der-gesten-als-funktion-des-kontextes-und-gesprächsdauer"><span class="header-section-number">4.2</span> Modell 2: Anzahl der Gesten als Funktion des Kontextes und Gesprächsdauer</a></li>
@@ -294,7 +294,7 @@ window.Quarto = {
 
 <section id="poisson-prozesse" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Poisson Prozesse</h1>
-<p>Die diversen wahrscheinlichkeitstheoretischen Verteilungen (wie Uniform-, Normal-, Bernoulli- oder Binomialverteilung) sind zunächst einmal rein mathematische Konstrukte, sich je nach Datenlage besser oder schlechter zur Modellierung eignen. Diese Eignung ist jedoch keine rein empirische Frage, sondern auch eine theoretische: Die Konstruktion der einzelnen Verteilungen bzw. deren mathematischen Eigenschaften machen sie bereitzs a priori mehr oder weniger geeignet für bestimmte Daten. Z.B. lässt sich mit dem zentralen Grenzwertsatz famously zeigen, dass die Summe von unabhängigen, identisch verteilten Zufallsvariablen mit endlicher Varianz - egal welcher Verteilung) gegen eine Normalverteilung konvergiert. Daher ist die Normalverteilung für die Modellierung von Daten geeignet, die als Summe von vielen kleinen, unabhängigen Einflüssen verstanden werden können wie etwa Intelligenz oder Körpergröße. Die Poissonverteilung hingegen eignet sich für die Modellierung von Daten, die als Anzahl von Ereignissen in einem festen Zeitintervall verstanden werden können, wenn diese <strong>Ereignisse unabhängig voneinander</strong> aber <strong>nicht gleichzeitig</strong> auftreten und die <strong>durchschnittliche Rate der Ereignisse konstant</strong> ist. Klassische Beispiele dafür sind die Anzahl der Anrufe in einem Callcenter pro Stunde, die Anzahl der Verkehrsunfälle an einer Kreuzung pro Tag oder der Gewaltverbrechen in einem Stadtviertel pro Monat.</p>
+<p>Die diversen wahrscheinlichkeitstheoretischen Verteilungen (wie Uniform-, Normal-, Bernoulli- oder Binomialverteilung) sind zunächst einmal rein mathematische Konstrukte, die sich je nach Datenlage besser oder schlechter zur Modellierung eignen. Diese Eignung ist jedoch keine rein empirische Frage, sondern auch eine theoretische: Die Konstruktion der einzelnen Verteilungen bzw. deren mathematischen Eigenschaften machen sie bereits a priori mehr oder weniger geeignet für bestimmte Daten. Z.B. lässt sich mit dem zentralen Grenzwertsatz bekanntlich zeigen, dass die Summe von unabhängigen, identisch verteilten Zufallsvariablen mit endlicher Varianz (egal welcher Verteilung) gegen eine Normalverteilung konvergiert. Daher ist die Normalverteilung für die Modellierung von Daten geeignet, die als Summe von vielen kleinen, unabhängigen Einflüssen verstanden werden können wie etwa Intelligenz oder Körpergröße. Die Poissonverteilung hingegen eignet sich für die Modellierung von Daten, die als Anzahl von Ereignissen in einem festen Zeitintervall verstanden werden können, wenn diese <strong>Ereignisse unabhängig voneinander</strong> aber <strong>nicht gleichzeitig</strong> auftreten und die <strong>durchschnittliche Rate der Ereignisse konstant</strong> ist. Klassische Beispiele dafür sind die Anzahl der Anrufe in einem Callcenter pro Stunde, die Anzahl der Verkehrsunfälle an einer Kreuzung pro Tag oder der Gewaltverbrechen in einem Stadtviertel pro Monat.</p>
 </section>
 <section id="poissonverteilung" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Poissonverteilung</h1>
@@ -438,14 +438,14 @@ window.Quarto = {
   }
 })();
 </script>
-<p>Der interaktiven Grfaik kann man nun entnehmen (oder analytisch zeigen), dass der Parameter <span class="math inline">\(\lambda\)</span> die Bedeutung des Erwartungswerts der Verteilung hat, d.h. <span class="math inline">\(E(Y) = \lambda\)</span>. Außerdem ist die Varianz der Verteilung ebenfalls gleich <span class="math inline">\(\lambda\)</span>, d.h. <span class="math inline">\(Var(Y) = \lambda\)</span>. Das bedeutet, dass die Poissonverteilung eine spezielle Eigenschaft hat, nämlich dass ihre Varianz gleich ihrem Erwartungswert ist.</p>
+<p>Der interaktiven Grafik kann man nun entnehmen (oder analytisch zeigen), dass der Parameter <span class="math inline">\(\lambda\)</span> die Bedeutung des Erwartungswerts der Verteilung hat, d.h. <span class="math inline">\(E(Y) = \lambda\)</span>. Außerdem ist die Varianz der Verteilung ebenfalls gleich <span class="math inline">\(\lambda\)</span>, d.h. <span class="math inline">\(Var(Y) = \lambda\)</span>. Das bedeutet, dass die Poissonverteilung eine spezielle Eigenschaft hat, nämlich dass ihre Varianz gleich ihrem Erwartungswert ist.</p>
 </section>
 <section id="poisson-regression" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Poisson Regression</h1>
 <p>Die »einfache lineare Regression« haben wir mittlerweile als »Normalverteilungregression« oder »Gaussian Regression« kennengelernt, weil bedingt für jede Ausprägung der UV (»an jeder Stelle der x-Achse«) die AV normalverteilt ist. Analog dazu können wir eine »Poisson Regression« definieren, indem wir annehmen, dass die AV für jede Ausprägung der UV einer Poissonverteilung folgt.</p>
 <p>Während bei der Gaussian Regression galt: <span class="math display">\[y_i \sim N(\mu_i, \sigma^2)\]</span> <span class="math display">\[ \mu_i = b_0 + b_1 \cdot x_i\]</span></p>
 <p>könnten wir eine Poisson Regression wie folgt definieren: <span class="math display">\[y_i \sim Poisson(\lambda_i)\]</span> <span class="math display">\[ \lambda_i = b_0 + b_1 \cdot x_i \]</span></p>
-<p>was konzeptuell wie folgt aussehn könnte:</p>
+<p>was konzeptuell wie folgt aussehen könnte:</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
@@ -455,7 +455,7 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<p>Dies liefert allerdings das Problem, dass <span class="math inline">\(\lambda_i\)</span> negativ werden kann, was für eine Poissonverteilung nicht sinnvoll ist. Daher wird in der Praxis meist die folgende Spezifikation mit einer sogenannten log-Link Funktion verwendet verwendet: <span class="math display">\[y_i \sim Poisson(\lambda_i)\]</span> <span class="math display">\[ \log(\lambda_i) = b_0 + b_1 \cdot x_i \]</span></p>
+<p>Dies liefert allerdings das Problem, dass <span class="math inline">\(\lambda_i\)</span> negativ werden kann, was für eine Poissonverteilung nicht sinnvoll ist. Daher wird in der Praxis meist die folgende Spezifikation mit einer sogenannten Log-Link-Funktion verwendet: <span class="math display">\[y_i \sim Poisson(\lambda_i)\]</span> <span class="math display">\[ \log(\lambda_i) = b_0 + b_1 \cdot x_i \]</span></p>
 <p>bzw. äquivalent (<span class="math inline">\(\Leftrightarrow\)</span>) dazu: <span class="math display">\[ \lambda_i = exp(b_0 + b_1 \cdot x_i) \]</span></p>
 <p>Aus der Linkfunktion folgt, dass die Regressionslinie nicht mehr linear sondern exponentiell ist (also an jeder Stelle von x eine andere Steigung hat) und die Parameter <span class="math inline">\(b_0\)</span> und <span class="math inline">\(b_1\)</span> nicht mehr die Bedeutung von Intercept und Steigung haben. Stattdessen ist <span class="math inline">\(exp(b_0)\)</span> die erwartete Anzahl der Ereignisse ist, wenn <span class="math inline">\(x=0\)</span> ist.</p>
 <div class="cell">
@@ -469,9 +469,9 @@ window.Quarto = {
 </div>
 <p>Bei nicht linearen Modellen ist der Zusammenhang zwischen Parametern und Regressionsmodell nicht mehr so leicht »im Kopf« herzustellen. In diesen Fällen lohnt es sich Marginal (oder bei Mehrebenenmodellen Conditional Effects) zu berechnen, um die Bedeutung der Parameter besser zu verstehen. Beide Effektarten geben an, wie sich die erwartete AV ändert - je nachdem wo die UV steht. Conditional Effekte geben an, um wie viel sich die erwartete Anzahl der Ereignisse ändert, wenn man die UV um eine Einheit erhöht, während alle anderen UV auf einem bestimmten Wert gehalten werden (z.B. dem Mittelwert).</p>
 </section>
-<section id="beispiel-1-anzahl-von-gesten-bei-sprechen" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Beispiel 1: Anzahl von Gesten bei Sprechen</h1>
-<p>Das erste Beipsiel kommt aus Winter &amp; Bürkner <span class="citation" data-cites="winter2021">(<a href="#ref-winter2021" role="doc-biblioref">2021</a>)</span> und beschäftigt sich mit der Anzahl von Gesten, die Menschen beim Sprechen machen. Es handelt sich dabei um messwiederholte Laborstudie, bei der Probanden<code>ID</code> zweier Sprachen <code>language</code> in zwei Kontexten <code>context</code> (z.B. informelles Gespräch mit Freund:in vs.&nbsp;formelles Gespräch mit Prof.) beobachtet wurden und die Anzahl ihrer Gesten <code>gestures</code> gezählt wurde.</p>
+<section id="beispiel-1-anzahl-von-gesten-beim-sprechen" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Beispiel 1: Anzahl von Gesten beim Sprechen</h1>
+<p>Das erste Beispiel kommt aus Winter &amp; Bürkner <span class="citation" data-cites="winter2021">(<a href="#ref-winter2021" role="doc-biblioref">2021</a>)</span> und beschäftigt sich mit der Anzahl von Gesten, die Menschen beim Sprechen machen. Es handelt sich dabei um eine messwiederholte Laborstudie, bei der Probanden (<code>ID</code>) zweier Sprachen (<code>language</code>) in zwei Kontexten (<code>context</code>, z.B. informelles Gespräch mit Freund:in vs.&nbsp;formelles Gespräch mit Prof.) beobachtet wurden und die Anzahl ihrer Gesten (<code>gestures</code>) gezählt wurde.</p>
 <div class="cell">
 <div>
 <div id="webr-1" class="exercise-cell">
@@ -492,7 +492,7 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImxhYmVsIjoiaW1wb3J0IHdpbnRlciBkYXRh
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Inwiefern sind die oben genannten konstituierenden Annahmen für einen Poissonprozess in diesem Datensatz plausibel?</p>
+<p>Inwiefern sind die oben genannten konstituierenden Annahmen für einen Poisson-Prozess in diesem Datensatz plausibel?</p>
 </div>
 </div>
 <section id="modell-1-anzahl-der-gesten-als-funktion-der-sprache" class="level2" data-number="4.1">
@@ -508,7 +508,13 @@ eyJhdHRyIjp7ImVkaXQiOnRydWUsImV2YWwiOnRydWUsImxhYmVsIjoibW9kZWwxIn0sImNvZGUiOiJc
 </script>
 </div>
 </div>
-<p>Erklärung der einzelnen Teile des Codes: * <code>glm()</code> steht für <em>generalized linear model</em> und ist die Funktion für verallgemeinerte lineare Modelle in R. * Die Formel <code>gestures ~ language</code> spezifiziert, dass die Anzahl der Gesten (<code>gestures</code>) durch die Sprache (<code>language</code>) vorhergesagt wird. * Der Datensatz <code>data_winter</code> enthält die Daten für das Modell. * <code>family = poisson(link = "log")</code> gibt an, dass die Poissonverteilung als Verteilungsannahme verwendet wird und die Log-Link-Funktion zur Verbindung von linearem Prädiktor und Erwartungswert dient.</p>
+<p>Erklärung der einzelnen Teile des Codes:</p>
+<ul>
+<li><code>glm()</code> steht für <em>generalized linear model</em> und ist die Funktion für verallgemeinerte lineare Modelle in R.</li>
+<li>Die Formel <code>gestures ~ language</code> spezifiziert, dass die Anzahl der Gesten (<code>gestures</code>) durch die Sprache (<code>language</code>) vorhergesagt wird.</li>
+<li>Der Datensatz <code>data_winter</code> enthält die Daten für das Modell.</li>
+<li><code>family = poisson(link = "log")</code> gibt an, dass die Poissonverteilung als Verteilungsannahme verwendet wird und die Log-Link-Funktion zur Verbindung von linearem Prädiktor und Erwartungswert dient.</li>
+</ul>
 <p>Der Output entspricht folgender Regressionsgleichung:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># print der Regressionsgleichung</span></span>
